@@ -12,7 +12,3 @@ RUN curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-co
 ## Docker
 RUN curl https://download.docker.com/linux/static/stable/x86_64/docker-17.09.0-ce.tgz > docker.tar.gz && tar xzvf docker.tar.gz -C /usr/local/bin/ --strip-components=1
 RUN rm docker.tar.gz && docker -v
-COPY docker-entrypoint.sh /usr/local/bin/
-
-ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["sh"]

@@ -19,6 +19,11 @@ RUN curl -sL https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-lin
 RUN curl -L https://github.com/rancher/rancher-compose/releases/download/v0.12.5/rancher-compose-linux-amd64-v0.12.5.tar.xz | tar xJvf -  --strip-components=2 -C /usr/local/bin/ && chmod +x /usr/local/bin/rancher-compose
 
 ## CI User
+RUN groupadd docker
 RUN useradd -ms /bin/bash ci && adduser ci sudo
+RUN usermod -aG docker ci
+
 USER ci
 WORKDIR /home/ci
+
+RUN java -version && node --version && docker --version && docker-compose --version && rancher-compose --version
